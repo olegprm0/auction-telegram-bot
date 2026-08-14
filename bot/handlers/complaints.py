@@ -259,7 +259,7 @@ async def notify_support_about_complaint(complaint: Complaint, complainant: User
 📝 <b>Причина:</b>
 {complaint.reason}
 
-{f'📎 <b>Доказательства:</b>\n{complaint.evidence}' if complaint.evidence else ''}
+{('📎 <b>Доказательства:</b>' + chr(10) + str(complaint.evidence)) if complaint.evidence else ''}
 
 🔗 <b>Действия:</b>
 • /review_complaint_{complaint.id} - Рассмотреть жалобу
