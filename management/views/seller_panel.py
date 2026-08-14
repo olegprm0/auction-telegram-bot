@@ -273,7 +273,7 @@ class EditLotDialog(QDialog):
         form_layout.addRow("Описание:", self.description_input)
 
         self.starting_price_input = QDoubleSpinBox()
-        self.starting_price_input.setRange(1, 1000000)
+        self.starting_price_input.setRange(1, 1000000000)
         self.starting_price_input.setSuffix(" ₽")
         form_layout.addRow("Стартовая цена:", self.starting_price_input)
 
@@ -648,7 +648,7 @@ class SellerPanel(QWidget):
 
         # Стартовая цена
         self.starting_price_input = QDoubleSpinBox()
-        self.starting_price_input.setRange(1, 1000000)
+        self.starting_price_input.setRange(1, 1000000000)
         self.starting_price_input.setSuffix(" ₽")
         self.starting_price_input.setValue(1000)
         form_layout.addRow("Стартовая цена:", self.starting_price_input)

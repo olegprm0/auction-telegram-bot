@@ -397,12 +397,6 @@ class TelegramPublisherSync:
 📅 <b>Время старта:</b> {start_time}
 ⏰ <b>Время окончания:</b> {end_time}
 
-📄 <b>Тип документа:</b> {doc_type_text}
-🔗 <b>Ссылка на продавца:</b> {lot.seller_link or 'Не указана'}
-
-💡 <b>Как участвовать:</b>
-• Откройте лот в боте @{BOT_USERNAME} по кнопке ниже
-• Минимальная ставка: {min_bid_amount:,.2f} ₽ (шаг: {min_increment:,.2f} ₽)
         """
 
         return message.strip()

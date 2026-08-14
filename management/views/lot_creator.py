@@ -73,7 +73,7 @@ class LotCreator(QWidget):
 
         # Стартовая цена
         self.starting_price_spin = QSpinBox()
-        self.starting_price_spin.setRange(1, 10000000)
+        self.starting_price_spin.setRange(1, 1000000000)
         self.starting_price_spin.setValue(1000)
         self.starting_price_spin.setSuffix(" ₽")
         form_layout.addRow("Стартовая цена:", self.starting_price_spin)
