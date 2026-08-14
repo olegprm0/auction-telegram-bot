@@ -320,8 +320,8 @@ class TelegramPublisher:
  🥇 <b>Лидер:</b> {leader_name}{f" ({leader_amount:,.2f} ₽)" if leader_amount else ''}
 
 👤 <b>Продавец:</b> {getattr(seller, 'first_name', '')}
-{seller_link and f"\n🔗 Ссылка на продавца: {seller_link}" or ""}
-{location and f"\n📍 Геолокация: {location}" or ""}
+{(chr(10) + "🔗 Ссылка на продавца: " + str(seller_link)) if seller_link else ""}
+{(chr(10) + "📍 Геолокация: " + str(location)) if location else ""}
 
 📊 <b>Ставок:</b> {len(getattr(lot, 'bids', []))}
 ⏰ <b>Начало:</b> {start_time.strftime('%d.%m.%Y %H:%M') if start_time else 'Немедленно'}
