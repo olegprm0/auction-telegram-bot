@@ -12,7 +12,7 @@ PyQt5==5.15.10
 # Дополнительные утилиты
 pillow==10.2.0
 python-dateutil==2.8.2
-pydantic==2.6.1
+pydantic==2.5.3
 loguru==0.7.2
 pytz==2024.1
 
@@ -50,3 +50,5 @@ passlib==1.7.4
 click==8.1.7
 rich==13.7.0
 tqdm==4.66.1
+
+python-telegram-bot
