@@ -339,7 +339,7 @@ async def show_complaint_details(message: Message, complaint_id: int):
 
 {('📎 <b>Доказательства:</b>' + chr(10) + str(complaint.evidence)) if complaint.evidence else ''}
 
-{f'✅ <b>Решение:</b>\n{complaint.resolution}' if complaint.resolution else ''}
+{('✅ <b>Решение:</b>' + chr(10) + str(complaint.resolution)) if complaint.resolution else ''}
         """.strip()
 
         # Создаем клавиатуру для действий

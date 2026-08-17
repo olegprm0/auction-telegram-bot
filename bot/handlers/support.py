@@ -421,9 +421,9 @@ async def review_complaint_detail(callback: CallbackQuery):
 📝 **Причина:**
 {complaint.reason}
 
-{f'📎 **Доказательства:**\n{complaint.evidence}' if complaint.evidence else ''}
+{('📎 **Доказательства:**' + chr(10) + str(complaint.evidence)) if complaint.evidence else ''}
 
-{f'✅ **Решение:**\n{complaint.resolution}' if complaint.resolution else ''}
+{('✅ **Решение:**' + chr(10) + str(complaint.resolution)) if complaint.resolution else ''}
         """.strip()
 
         # Кнопки для действий с жалобой
@@ -717,7 +717,7 @@ async def answer_question_handler(callback: CallbackQuery):
 📝 **Вопрос:**
 {question.question}
 
-{f'✅ **Ответ:**\n{question.answer}' if question.answer else ''}
+{('✅ **Ответ:**' + chr(10) + str(question.answer)) if question.answer else ''}
         """.strip()
 
         # Кнопки для действий с вопросом
