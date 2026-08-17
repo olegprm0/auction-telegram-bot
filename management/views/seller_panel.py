@@ -1122,7 +1122,7 @@ class SellerPanel(QWidget):
                     current_price=starting_price,
                     min_bid_increment=1.0,
                     seller_id=self.current_user["id"],
-                    status=LotStatus.PENDING,
+                    status=LotStatus.ACTIVE,
                     document_type=document_type,
                     start_time=start_time,
                     end_time=start_time + timedelta(hours=24) if start_time else None,
@@ -1151,12 +1151,17 @@ class SellerPanel(QWidget):
                         new_lot.files = json.dumps(file_paths)
                         db.commit()
 
-                QMessageBox.information(
-                    self,
-                    "Успех",
-                    f"Лот '{title}' отправлен на модерацию!\nID лота: {new_lot.id}\n"
-                    "Ожидайте одобрения модератором.",
-                )
+                try:
+    from management.core.telegram_publisher_sync import telegram_publisher_sync
+    telegram_publisher_sync.publish_lot(new_lot.id)
+except Exception as pub_error:
+    logger.error(f"Ошибка при публикации лота: {pub_error}")
+
+QMessageBox.information(
+    self,
+    "Успех",
+    f"Лот '{title}' опубликован!\nID лота: {new_lot.id}",
+)
 
                 # Очищаем форму
                 self.clear_form()
