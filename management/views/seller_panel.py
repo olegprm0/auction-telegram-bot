@@ -1125,7 +1125,7 @@ class SellerPanel(QWidget):
                     status=LotStatus.ACTIVE,
                     document_type=document_type,
                     start_time=start_time,
-                    end_time=start_time + timedelta(hours=24) if start_time else None,
+                    end_time=(start_time or datetime.now()) + timedelta(hours=24),
                     location=self.location_input.text().strip(),
                     seller_link=self.seller_link_input.text().strip(),
                 )
