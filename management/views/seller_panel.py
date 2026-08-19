@@ -1004,7 +1004,7 @@ class SellerPanel(QWidget):
                     status=LotStatus.DRAFT,
                     document_type=document_type,
                     start_time=start_time,
-                    end_time=start_time + timedelta(hours=24) if start_time else None,
+                    end_time=(start_time or datetime.now()) + timedelta(hours=24),
                     location=self.location_input.text().strip(),
                     seller_link=self.seller_link_input.text().strip(),
                 )
@@ -1152,16 +1152,19 @@ class SellerPanel(QWidget):
                         db.commit()
 
                 try:
-    from management.core.telegram_publisher_sync import telegram_publisher_sync
-    telegram_publisher_sync.publish_lot(new_lot.id)
-except Exception as pub_error:
-    logger.error(f"Ошибка при публикации лота: {pub_error}")
+                    from management.core.telegram_publisher_sync import (
+                        telegram_publisher_sync,
+                    )
 
-QMessageBox.information(
-    self,
-    "Успех",
-    f"Лот '{title}' опубликован!\nID лота: {new_lot.id}",
-)
+                    telegram_publisher_sync.publish_lot(new_lot.id)
+                except Exception as pub_error:
+                    logger.error(f"Ошибка при публикации лота: {pub_error}")
+
+                QMessageBox.information(
+                    self,
+                    "Успех",
+                    f"Лот '{title}' опубликован!\nID лота: {new_lot.id}",
+                )
 
                 # Очищаем форму
                 self.clear_form()
