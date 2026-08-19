@@ -458,8 +458,8 @@ class LotValidator:
         price = data.get("starting_price", 0)
         if price <= 0:
             errors.append("Стартовая цена должна быть больше 0")
-        elif price > 1000000:
-            errors.append("Стартовая цена не должна превышать 1,000,000 ₽")
+        elif price > 100000000:
+    errors.append("Стартовая цена не должна превышать 100,000,000 ₽")
 
         # Проверка времени старта (если указано)
         start_time = data.get("start_time")
