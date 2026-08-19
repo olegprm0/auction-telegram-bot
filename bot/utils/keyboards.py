@@ -82,7 +82,6 @@ def get_auction_keyboard(lot_id: int) -> InlineKeyboardMarkup:
     """Клавиатура аукциона"""
     keyboard = [
         [InlineKeyboardButton(text="💰 Сделать ставку", callback_data=f"bid:{lot_id}")],
-        [InlineKeyboardButton(text="📋 Детали лота", callback_data=f"lot:{lot_id}")],
         [
             InlineKeyboardButton(
                 text="📞 Связаться с продавцом",
